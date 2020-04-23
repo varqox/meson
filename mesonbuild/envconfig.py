@@ -123,6 +123,8 @@ def get_env_var_pair(for_machine: MachineChoice,
         # Always just the unprefixed host verions
         ([] if is_cross else [var_name]),
     )[for_machine]
+    if not candidates:
+        return None
     for var in candidates:
         value = os.environ.get(var)
         if value is not None:
