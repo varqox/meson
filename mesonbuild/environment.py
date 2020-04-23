@@ -899,7 +899,7 @@ class Environment:
     def _detect_c_or_cpp_compiler(self, lang: str, for_machine: MachineChoice) -> Compiler:
         popen_exceptions = {}
         compilers, ccache, exe_wrap = self._get_compilers(lang, for_machine)
-        is_cross = not self.machines.matches_build_machine(for_machine)
+        is_cross = not self.machines.matches_build_machine(for_machine) or self.need_exe_wrapper(for_machine)
         info = self.machines[for_machine]
 
         for compiler in compilers:

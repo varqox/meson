@@ -1539,7 +1539,7 @@ int dummy;
         for for_machine in MachineChoice:
             static_linker = self.build.static_linker[for_machine]
             if static_linker is None:
-                return
+                continue
             rule = 'STATIC_LINKER%s' % self.get_rule_suffix(for_machine)
             cmdlist = []
             args = ['$in']
